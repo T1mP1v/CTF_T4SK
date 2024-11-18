@@ -1,0 +1,5 @@
+<FilesMatch "^flag$">
+    Require all denied
+</FilesMatch>
+
+ErrorDocument 403 /uploads/flag/html/flag.html
