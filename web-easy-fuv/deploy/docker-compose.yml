@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  puzzlemaster:
+    build: 
+      context: ./puzzlemaster
+      dockerfile: Dockerfile
+    container_name: puzzlemaster_container
+    ports:
+      - "22223:8080"
+    volumes:
+      - ./flag:/var/www/html/flag/flag:ro # Папка с флагом в режиме только для чтения
+      - ./puzzlemaster/www/:/var/www/html/
+    restart: on-failure
+    depends_on:
+      - anti_cheat
+
+  anti_cheat:
+    build:
+      context: ./anti_cheat
+      dockerfile: Dockerfile
+    container_name: anti_cheat_container
+    volumes:
+      - ./flag:/var/www/html/flag/flag # Общий volume для работы с флагами
+    restart: always
+
+  deploy:
+      resources:
+        limits:
+          cpus: '0.03'
+          memory: 15M
+          pids: 10
+
+volumes:
+  flag_volume:
