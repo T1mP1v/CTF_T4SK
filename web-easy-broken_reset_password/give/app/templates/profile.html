@@ -1,0 +1,98 @@
+<div class="page-content page-container" id="page-content">
+    <link rel="stylesheet" href="../static/css/profile.css">
+
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-xl-8 col-md-12">
+
+                {% if flag %}
+                <div class="alert alert-success text-center">
+                    <strong>FLAG:</strong> {{ flag }}
+                </div>
+                {% endif %}
+
+                <div class="card user-card-full shadowed-card">
+                    <div class="row m-l-0 m-r-0">
+
+                        <div class="col-sm-4 bg-c-lite-green user-profile">
+                            <div class="card-block text-center text-white">
+                                <div class="m-b-25 profile-img-container">
+                                    <img src="https://img.icons8.com/bubbles/100/000000/user.png"
+                                         class="img-radius" alt="User-Profile-Image">
+                                </div>
+                                <h5 class="f-w-600 user-name">{{ user.name }}</h5>
+                                <i class="mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-8">
+                            <div class="card-block">
+                                <div class="info-section">
+                                    <h6 class="section-title">Contact</h6>
+                                    <p class="info-label">Email</p>
+                                    <h6 class="info-value">{{ user.email }}</h6>
+                                </div>
+
+                                <div class="info-section mt-4">
+                                    <h6 class="section-title">Profile Description</h6>
+                                    <div class="profile-description-container">
+                                        <div class="profile-description p-3" id="profile-desc-container">
+                                            {{ user.description or "Описание профиля пока отсутствует" }}
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary w-100 mt-3" onclick="enableDescriptionEdit()">Change description</button>
+                                </div>
+
+                                <div class="row mt-4">
+                                    <div class="col-sm-6 mb-2">
+                                        <a href="/api/reset_password/request" class="btn btn-primary w-100">Reset password</a>
+                                    </div>
+                                    <div class="col-sm-6 mb-2">
+                                        <a href="/logout" class="btn btn-danger w-100">Logout</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function enableDescriptionEdit() {
+            const container = document.getElementById('profile-desc-container');
+            const current = container.innerText.trim();
+
+            container.parentElement.innerHTML = `
+                <div class="description-editor">
+                    <textarea id="desc-editor" class="custom-textarea" placeholder="Расскажите о себе...">${current}</textarea>
+                </div>
+                <button class="btn custom-save-btn w-100 mt-3" onclick="saveDescription()">Save description</button>
+            `;
+
+            document.getElementById('desc-editor').focus();
+        }
+
+        function saveDescription() {
+            const newDesc = document.getElementById('desc-editor').value;
+            localStorage.setItem('profile_description', newDesc);
+            
+            const container = document.querySelector('.profile-description-container');
+            container.innerHTML = `
+                <div class="profile-description p-3" id="profile-desc-container">${newDesc}</div>
+            `;
+            
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('profile_description');
+            if (saved) {
+                document.getElementById('profile-desc-container').innerHTML = saved;
+            }
+        });
+    </script>
+</div>

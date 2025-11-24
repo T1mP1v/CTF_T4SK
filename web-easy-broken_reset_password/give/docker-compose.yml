@@ -1,0 +1,11 @@
+services:
+  web:
+    build: app/.
+    container_name: web-easy-broken_reset_password
+    ports:
+      - 8181:8181
+    volumes:
+      - ./flag.txt:/app/flag.txt:ro
+    env_file:
+      - .env
+    restart: unless-stopped

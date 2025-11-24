@@ -1,0 +1,132 @@
+/*
+ * File Name:     virtual-keyboard.css
+ * By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
+ * Date:          Wednesday, May 20, 2020
+ */
+
+#virtual-keyboard-container {
+    background-color: #1F1F1F;
+    font-size: 75%;
+    font-weight: bold;
+    padding: 25px;
+    width: calc(100% - 48px);
+    overflow-x: auto;
+}
+
+#virtual-keyboard {
+    margin: 0 auto;
+    position: relative;
+    width: 695px;
+}
+
+#virtual-keyboard div {
+    display: inline-block;
+    white-space: nowrap;
+    list-style: none;
+    user-select: none;
+}
+
+#virtual-keyboard div:last-child {
+    margin-right: 0;
+}
+
+.keyboard-row {
+    margin-right: 25px;
+    position: relative;
+    width: 100%;
+}
+
+#virtual-keyboard div:last-child {
+    margin-bottom: 0;
+}
+
+.on {
+    display: none;
+}
+
+.symbol-key, .regular-key, .special-key {
+    background: #3D3D3D;
+    color: #CCC;
+    cursor: pointer;
+    float: left;
+    height: 35px;
+    margin-right: 10px;
+    text-align: left;
+    transition: background-color .2s ease-in-out, box-shadow .2s ease-in-out;
+}
+
+.special-key-on {
+    background-color: #1669B7;
+}
+
+.regular-key, .symbol-key {
+    width: 35px;
+}
+
+.symbol-key span, .regular-key span, .special-key span {
+    top: 5px;
+    left: 7.5px;
+    position: relative;
+}
+
+#backspace-key {
+    width: 110px;
+}
+
+#caps-lock-key, #left-shift, #tab-key {
+    width: 80px;
+}
+
+#enter-key {
+    width: 65px;
+    height: 82.8px;
+    position: absolute;
+    z-index: 1;
+}
+
+#right-shift {
+    width: 155px;
+}
+
+#spacebar-key {
+    text-align: center;
+    margin: 0;
+    width: 100%;
+}
+
+#spacebar-key span {
+    top: 10px;
+    left: 0;
+}
+
+.regular-key:hover, .special-key:hover, .symbol-key:hover {
+    background-color: #1669B7;
+    box-shadow: 0 0 5px #1669B7;
+}
+
+.regular-key:active, .special-key:active, .symbol-key:active {
+    background-color: #00509E;
+    box-shadow: 0 0 5px #00509E;
+}
+.hint-container {
+    margin: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10em;
+    justify-content: center;
+}
+
+.hint-key {
+    border: 1px solid #aaa;
+    padding: 8px 14px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 75%;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.15s ease-in-out;
+}
+.hint-key:hover {
+    box-shadow: 0 1px #666;
+    transform: translateY(1px);
+}

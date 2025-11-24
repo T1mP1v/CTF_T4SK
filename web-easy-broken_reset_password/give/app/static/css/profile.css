@@ -1,0 +1,393 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background: linear-gradient(135deg, #9896F0 0%, #FBC8D5 100%);
+    margin: 0;
+    min-height: 100vh;
+    padding: 20px 0;
+}
+
+.padding {
+    padding: 2rem;
+}
+
+.user-card-full {
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    background: #fff;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.shadowed-card {
+    box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+}
+
+.user-profile {
+    border-radius: 20px 0 0 20px;
+    padding: 40px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.user-profile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(251, 238, 151, 0.9) 0%, rgba(173, 237, 213, 0.9) 100%);
+    z-index: 1;
+}
+
+.user-profile > .card-block {
+    position: relative;
+    z-index: 2;
+}
+
+.bg-c-lite-green {
+    background: linear-gradient(135deg, #FBEE97 0%, #ADEDD5 50%, #FBEE97 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.profile-img-container {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(255,255,255,0.8);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.profile-img-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+}
+
+.img-radius {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.profile-img-container:hover .img-radius {
+    transform: scale(1.1);
+}
+
+.user-name {
+    margin: 15px 0 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-block {
+    padding: 2.5rem;
+}
+
+.section-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #FBEE97, #ADEDD5);
+    border-radius: 2px;
+}
+
+.info-section {
+    margin-bottom: 25px;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #5d6d7e;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-value {
+    font-weight: 500;
+    color: #2c3e50;
+    word-wrap: break-word;
+    font-size: 1rem;
+}
+
+/* Стили для описания профиля */
+.profile-description-container {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.profile-description {
+    min-height: 140px;
+    padding: 20px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.profile-description::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #FBEE97, #ADEDD5);
+    border-radius: 18px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profile-description:hover::before {
+    opacity: 1;
+}
+
+.profile-description:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+/* Стили для формы редактирования */
+.description-editor {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.custom-textarea {
+    width: 100%;
+    border: 2px solid transparent;
+    border-radius: 16px;
+    padding: 20px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: vertical;
+    min-height: 140px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    background-clip: padding-box;
+}
+
+.custom-textarea::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #FBEE97, #ADEDD5);
+    border-radius: 18px;
+    z-index: -1;
+}
+
+.custom-textarea:focus {
+    outline: none;
+    border-color: transparent;
+    background: #ffffff;
+    box-shadow: 0 8px 35px rgba(173, 237, 213, 0.4);
+    transform: translateY(-2px);
+}
+
+.custom-textarea::placeholder {
+    color: #95a5a6;
+    font-style: italic;
+}
+
+/* Кнопки */
+.btn {
+    display: block;
+    padding: 12px 20px;
+    text-align: center;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #FBEE97 0%, #ADEDD5 100%);
+    color: #2c3e50;
+    box-shadow: 0 4px 15px rgba(251, 238, 151, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(173, 237, 213, 0.4);
+    color: #2c3e50;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.btn-danger:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(192, 57, 43, 0.4);
+    color: white;
+}
+
+.custom-save-btn {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+}
+
+.custom-save-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+    color: white;
+}
+
+/* Алерт */
+.alert-success {
+    background: linear-gradient(135deg, #FBEE97 0%, #ADEDD5 100%);
+    border: none;
+    border-radius: 16px;
+    color: #2c3e50;
+    font-weight: 600;
+    box-shadow: 0 8px 25px rgba(173, 237, 213, 0.4);
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    animation: slideInDown 0.5s ease;
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.user-card-full {
+    animation: fadeInUp 0.6s ease;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .user-profile {
+        border-radius: 20px 20px 0 0;
+        padding: 30px 0;
+    }
+    
+    .padding {
+        padding: 1rem;
+    }
+    
+    .card-block {
+        padding: 1.5rem;
+    }
+    
+    .profile-img-container {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* Кастомный скроллбар */
+.custom-textarea::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-textarea::-webkit-scrollbar-track {
+    background: rgba(173, 237, 213, 0.1);
+    border-radius: 4px;
+}
+
+.custom-textarea::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #FBEE97, #ADEDD5);
+    border-radius: 4px;
+}
+
+.custom-textarea::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #ADEDD5, #FBEE97);
+}
+
+/* Иконка редактирования */
+.feather {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+.feather:hover {
+    transform: scale(1.2);
+    color: #ADEDD5;
+}

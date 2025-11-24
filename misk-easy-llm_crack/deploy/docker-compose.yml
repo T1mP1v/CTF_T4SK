@@ -1,0 +1,17 @@
+services:
+  fastapi:
+    container_name: misk-medium_crack_llm
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8888:8888"
+    volumes:
+      - "./flag.txt:/app/flag.txt:ro"
+    # if use gpu:
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
